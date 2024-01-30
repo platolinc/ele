@@ -21,11 +21,11 @@
     }
   }
 
-  // &-ellipsis {
-  //   white-space: nowrap; /* 规定文本是否折行 */
-  //   overflow: hidden; /* 规定超出内容宽度的元素隐藏 */
-  //   text-overflow: ellipsis; /* 规定超出的内容文本省略号显示，通常跟上面的属性连用，因为没有上面的属性不会触发超出规定的内容 */
-  // }
+  &-ellipsis {
+    white-space: nowrap; /* 规定文本是否折行 */
+    overflow: hidden; /* 规定超出内容宽度的元素隐藏 */
+    text-overflow: ellipsis; /* 规定超出的内容文本省略号显示，通常跟上面的属性连用，因为没有上面的属性不会触发超出规定的内容 */
+  }
 
   // &-lazyload {
   //   background-color: rgb(173, 171, 171);

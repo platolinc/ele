@@ -3,8 +3,9 @@ import type { ICountdown, IHomeInfo } from '@/types'
 import TheTop from './components/TheTop.vue'
 import TheTransformer from './components/TheTransformer.vue'
 import ScrollBar from './components/ScrollBar.vue'
-import { useToggle } from '@/use/useToggle'
 import SearchView from '@/views/search/SearchView.vue'
+import CountDown from './components/CountDown.vue'
+import { useToggle } from '@/use/useToggle'
 import { useAsync } from '@/use/useAsync'
 import { fetchHomePageData } from '@/api/home'
 import OpLoadingView from '@/components/OpLoadingView.vue'
@@ -33,6 +34,9 @@ const { data, pending } = useAsync(fetchHomePageData, {
       </div>
       <TheTransformer :data="data.transformer" />
       <ScrollBar :data="data.scrollBarInfoList" />
+      <div class="home-page__activity">
+        <CountDown :data="data.countdown" />
+      </div>
     </OpLoadingView>
   </div>
 </template>
@@ -55,6 +59,23 @@ const { data, pending } = useAsync(fetchHomePageData, {
       width: 100%;
       padding-top: 10px;
       background: white;
+    }
+  }
+
+  &__activity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+
+    &__swipe {
+      border-radius: 8px;
+      width: 180px;
+      height: 170px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }
