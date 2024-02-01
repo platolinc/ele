@@ -35,9 +35,9 @@ const onTabScroll = ({ isFixed }: { isFixed: boolean }) => {
 <template>
   <div class="home-page">
     <Transition name="fade">
-      <SearchView v-if="!isSearchViewShown" @cancel="toggleSearchView"></SearchView>
+      <SearchView v-if="isSearchViewShown" @cancel="toggleSearchView"></SearchView>
     </Transition>
-    <div v-show="isSearchViewShown">
+    <div v-show="!isSearchViewShown">
       <TheTop :recomments="data.searchRecomments" @searchClick="toggleSearchView" />
       <OpLoadingView :loading="pending" type="skeleton">
         <div class="home-page__banner">
