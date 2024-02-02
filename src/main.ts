@@ -6,6 +6,7 @@ import { Tabbar, TabbarItem, Search, Icon, Loading, Skeleton, Tabs, Tab, Sticky 
 
 import App from './App.vue'
 import router from './router'
+import lazyPlugin from './directives/lazyloading'
 
 import 'vant/lib/index.css'
 import './assets/common.scss'
@@ -24,6 +25,7 @@ app.use(Skeleton)
 app.use(Tabs)
 app.use(Tab)
 app.use(Sticky)
+app.use(lazyPlugin)
 
 const rootValue = 16
 const rootWidth = 390
