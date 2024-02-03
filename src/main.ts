@@ -2,7 +2,22 @@
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { Tabbar, TabbarItem, Search, Icon, Loading, Skeleton, Tabs, Tab, Sticky } from 'vant'
+import {
+  Tabbar,
+  TabbarItem,
+  Search,
+  Icon,
+  Loading,
+  Skeleton,
+  Tabs,
+  Tab,
+  Sticky,
+  NavBar,
+  Form,
+  CellGroup,
+  Field,
+  Button,
+} from 'vant'
 
 import App from './App.vue'
 import router from './router'
@@ -26,6 +41,11 @@ app.use(Tabs)
 app.use(Tab)
 app.use(Sticky)
 app.use(lazyPlugin)
+app.use(NavBar)
+app.use(Form)
+app.use(CellGroup)
+app.use(Field)
+app.use(Button)
 
 const rootValue = 16
 const rootWidth = 390
