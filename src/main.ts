@@ -17,6 +17,7 @@ import {
   CellGroup,
   Field,
   Button,
+  ActionSheet,
 } from 'vant'
 
 import App from './App.vue'
@@ -46,6 +47,7 @@ app.use(Form)
 app.use(CellGroup)
 app.use(Field)
 app.use(Button)
+app.use(ActionSheet)
 
 const rootValue = 16
 const rootWidth = 390
