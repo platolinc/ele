@@ -8,7 +8,7 @@ export interface IGood {
   oldPrice: number
   price: number
   rating: number
-  sellCount: number
+  sellcount: number
   tips: string
 }
 
