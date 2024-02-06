@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { IMenu } from '@/types'
+import type { IGood, IMenu } from '@/types'
 import type OpLoadingView from '@/components/OpLoadingView.vue'
 import { useAsync } from '@/use/useAsync'
+import { useCartStore } from '@/stores/cart'
 import { fetchGoodsListData } from '@/api/goods'
 import { useRoute } from 'vue-router'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import GoodsItem from './GoodsItem.vue'
 
 const route = useRoute()
@@ -14,6 +15,13 @@ const { data, pending } = useAsync(
   [] as IMenu[],
 )
 
+const { setCartItems } = useCartStore()
+watch(data, (nv) => {
+  const cartGoods = nv
+    .reduce((p: IGood[], v: IMenu) => [...p, ...v.goods], [])
+    .filter((v) => v.cartCount)
+  setCartItems(cartGoods)
+})
 const categoryActive = ref(0)
 </script>
 
