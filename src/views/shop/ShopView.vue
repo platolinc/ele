@@ -8,6 +8,7 @@ import OpLoadingView from '@/components/OpLoadingView.vue'
 import ShopHeader from './components/ShopHeader.vue'
 import GoodsList from './components/GoodsList.vue'
 import OpTodo from '@/components/OpTodo.vue'
+import ShopCart from './components/ShopCart.vue'
 
 const TAB_LIST = [
   {
@@ -60,11 +61,21 @@ const onClickLeft = () => history.back()
     <VanNavBar left-text="返回" left-arrow @click-left="onClickLeft"></VanNavBar>
     <OpLoadingView :loading="pending" type="skeleton">
       <ShopHeader :data="data" />
-      <VanTabs v-model="active" :color="PRIMARY_COLOR" sticky animated swipeable>
+      <VanTabs v-model:active="active" :color="PRIMARY_COLOR" sticky animated swipeable>
         <VanTab v-for="v in TAB_LIST" :key="v.value" :title="v.label" :name="v.value">
           <component :is="v.component"></component>
         </VanTab>
       </VanTabs>
+      <ShopCart v-if="active === 1"></ShopCart>
     </OpLoadingView>
   </div>
 </template>
+
+<style lang="scss">
+.shop-page {
+  .van-tabs__line,
+  .van-nav-bar {
+    z-index: 0;
+  }
+}
+</style>
