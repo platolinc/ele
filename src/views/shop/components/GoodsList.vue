@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { IGood, IMenu } from '@/types'
-import type OpLoadingView from '@/components/OpLoadingView.vue'
+import OpLoadingView from '@/components/OpLoadingView.vue'
 import { useAsync } from '@/use/useAsync'
 import { useCartStore } from '@/stores/cart'
 import { fetchGoodsListData } from '@/api/goods'

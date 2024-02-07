@@ -4,6 +4,8 @@ import { useCartStore } from '@/stores/cart'
 import CartLogo from '@/assets/imgs/shop_page/shop-cart/shop-cart.png'
 import EmptyCartLogo from '@/assets/imgs/shop_page/shop-cart/shop-cart-o.png'
 import { useToggle } from '@/use/useToggle'
+import { useTransition } from '@/use/useTransition'
+import { useEventBus } from '@/use/useEventBus'
 import GoodsItem from './GoodsItem.vue'
 import { showConfirmDialog } from 'vant'
 
@@ -11,6 +13,12 @@ const store = useCartStore()
 const packageFee = ref(5)
 const cartLogo = computed(() => (store.total ? CartLogo : EmptyCartLogo))
 const [isCartListShown, toggleCartListShown] = useToggle(false)
+const { items, start, beforeEnter, enter, afterEnter } = useTransition()
+const eventBus = useEventBus()
+eventBus.on('cart-add', (el) => {
+  start(el)
+})
+
 const showCartListPopup = () => {
   if (!store.total) {
     return
@@ -96,6 +104,15 @@ const removeAll = () => {
           <div>预计券后￥{{ store.totalPrice }}</div>
         </div>
         <div v-else class="order-btn order-btn--empty">￥20起送</div>
+      </div>
+    </div>
+    <div class="shop-cart__ball-container">
+      <div v-for="(v, i) in items" :key="i">
+        <Transition @beforeEnter="beforeEnter" @enter="enter" @afterEnter="afterEnter">
+          <div v-show="v.isShown" class="ball">
+            <div class="inner"></div>
+          </div>
+        </Transition>
       </div>
     </div>
   </div>
@@ -263,6 +280,22 @@ const removeAll = () => {
           background: rgb(152, 152, 152);
           line-height: 36px;
         }
+      }
+    }
+  }
+
+  &__ball-container {
+    .ball {
+      position: fixed;
+      bottom: 10px;
+      left: 25px;
+      transition: all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41);
+      .inner {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--op-primary-color);
+        transition: all 0.4s linear;
       }
     }
   }
