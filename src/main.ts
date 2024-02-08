@@ -27,7 +27,7 @@ import {
 
 import App from './App.vue'
 import router from './router'
-import lazyPlugin from './directives/lazyloading'
+import lazyPlugin from '@/directives/lazyLoading'
 
 import 'vant/lib/index.css'
 import './assets/common.scss'
