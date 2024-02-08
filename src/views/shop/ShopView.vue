@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAsync } from '@/use/useAsync'
+// import { useLockScroll } from '@/use/useLockScroll'
 import { PRIMARY_COLOR } from '@/config'
 import { fetchShopPageData } from '@/api/shop'
 import OpLoadingView from '@/components/OpLoadingView.vue'
@@ -52,6 +53,7 @@ const { data, pending } = useAsync(() => fetchShopPageData(id as string), {
   shopName: '',
   tops: [],
 })
+// useLockScroll(() => active.value === 1)
 
 const onClickLeft = () => history.back()
 </script>
