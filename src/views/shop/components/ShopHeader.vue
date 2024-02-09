@@ -14,7 +14,7 @@ interface IProps {
   data: IShopDetail
 }
 const props = defineProps<IProps>()
-const [isPopupShown, showPopup] = useToggle()
+const [isPopupShown, showPopup] = useToggle(false)
 
 const topThreeServices = computed(() => props.data.services.slice(0, 3))
 const reduction = computed(() => {
